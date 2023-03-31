@@ -7,10 +7,16 @@ using UnityEngine.UIElements;
 public class ClickOnChunk : MonoBehaviour
 {
     [SerializeField] private Camera _camera;
+    [SerializeField] private GameObject _upgradeMenu;
+    [SerializeField] private GameObject _tipsMenu;
 
 
     void Update()
     {
+        if (_upgradeMenu.gameObject.activeSelf == true | _tipsMenu.gameObject.activeSelf == true)
+        {
+            return;
+        }
         Ray ray = _camera.ScreenPointToRay(Input.mousePosition);
         if (Physics.Raycast(ray, out RaycastHit hit))
         {
